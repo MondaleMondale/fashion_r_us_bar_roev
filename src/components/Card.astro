@@ -1,0 +1,26 @@
+---
+// export interface Props {
+// 	title: string;
+
+// }
+const { title, img, link } = Astro.props;
+---
+
+<article>
+  <h1>{title}</h1>
+  <a href={link}>Ze Link</a>
+  <img src={img} alt="" />
+  <!-- <h2>Jeg er her også forneden</h2>
+<p>***************************</p> -->
+</article>
+<style>
+  article {
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: content-box;
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    /* background-color:red; */
+  }
+  img {
+    width: 50%;
+  }
+</style>

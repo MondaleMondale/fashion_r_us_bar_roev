@@ -1,20 +1,16 @@
 ---
-//let myParam = "Det er mig der hedder Knud";
+export let allJsonObjects;
 export async function getStaticPaths() {
-  // console.log("paginate", paginate);
   const response = await fetch("https://dummyjson.com/products/");
   const theJSON = await response.json();
-  const allJsonObjects = theJSON.products;
-  //console.log("[id]", theJSON);
+
+  allJsonObjects = theJSON.products;
 
   return allJsonObjects.map((each) => ({ params: { id: each.id } }));
 }
+
 const { id } = Astro.params;
-const response = await fetch("https://dummyjson.com/products/");
-const theJSON = await response.json();
-// console.log(typeof theJSON.products[2].id);
-// console.log(typeof id);
-const localContent = theJSON.products.find((elm) => elm.id.toString() === id);
+const localContent = allJsonObjects.find((elm) => elm.id.toString() === id);
 console.log("Hey det her localContent", localContent);
 ---
 

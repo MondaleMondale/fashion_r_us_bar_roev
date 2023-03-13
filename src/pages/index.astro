@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
+import "../styles/style.css";
 const tis = "Holy shit";
 let myJson;
 
@@ -10,25 +11,15 @@ await fetch("https://dummyjson.com/products/")
   .then((json) => {
     myJson = json.products;
     // console.log("myJson", myJson);
-    buildTheFucker();
   });
-function buildTheFucker() {
-  // console.log("build The Fucker",myJson);
-  // myJson.forEach((element) => {
-  //   console.log(element.title);
-  // });
-}
 ---
 
 <Layout title="HEJ DU">
-  <!-- {myJson.map((element) => <h2>{element.title}</h2>)} -->
   <main>
     <section>
-      {myJson.map((element) => <Card title={element.title + " ID: " + element.id} img={element.images[0]} link={`ids/${element.id}`} />)}
+      {myJson.map((element) => <Card title={element.title} img={element.images[0]} link={element.id} />)}
     </section>
   </main>
-  <!-- <h1>Index.astro</h1>
-  <h2>{tis}</h2> -->
 </Layout>
 <style>
   main {
@@ -40,5 +31,9 @@ function buildTheFucker() {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1rem;
+  }
+  * {
+    padding: 0;
+    margin: 0;
   }
 </style>

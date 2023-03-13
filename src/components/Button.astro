@@ -1,0 +1,27 @@
+---
+const { btnName, href } = Astro.props;
+---
+
+<!-- <button onclick="window.location.href='http://dr.dk';"> -->
+<button onclick={href}>
+  {btnName}
+</button>
+
+<style>
+  button {
+    padding: 0 5px 0 5px;
+    border-radius: 5px;
+    background-color: darkgreen;
+    color: white;
+    border: 0.5px solid slategray;
+    cursor: pointer;
+    background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgb(255 255 255 / 60%), inset -2px -2px 3px rgb(0 0 0 / 60%);
+    transition: all 0.5s;
+  }
+  button:hover {
+    background-color: red;
+    box-shadow: none;
+    background-image: none;
+  }
+</style>
